@@ -9,6 +9,6 @@
 import Foundation
 
 enum NetworkConstants {
-    static let accessKey = "2f099e3f525c372c0eb7cc654b98d8777dc8c7286a48f21f3a8209807abde68a"
     static let baseUrl = "https://api.unsplash.com"
+    static let accessKey = "2f099e3f525c372c0eb7cc654b98d8777dc8c7286a48f21f3a8209807abde68a"
 }

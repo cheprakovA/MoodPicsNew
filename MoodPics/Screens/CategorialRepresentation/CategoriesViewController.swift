@@ -8,17 +8,17 @@
 
 import UIKit
 
-enum moodLevel: String {
-    case negative = "negative"
-    case sad = "sad"
-    case neutral = "neutral"
-    case cheery = "cheery"
-    case positive = "positive"
-}
-
 class CategoriesViewController: UIViewController {
 
     @IBOutlet weak var categoriesTableView: UITableView!
+    
+    let moodLevels = [
+        "negative",
+        "sad",
+        "neutral",
+        "cheery",
+        "positive"
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +33,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        switch indexPath.row {
-        case 0: cell.configureTitle(title: moodLevel.negative.rawValue)
-        case 1: cell.configureTitle(title: moodLevel.sad.rawValue)
-        case 2: cell.configureTitle(title: moodLevel.neutral.rawValue)
-        case 3: cell.configureTitle(title: moodLevel.cheery.rawValue)
-        case 4: cell.configureTitle(title: moodLevel.positive.rawValue)
-        default: cell.configureTitle(title: "error")
-        }
-        
+        cell.configureTitle(title: moodLevels[indexPath.item])
         return cell
     }
 
@@ -51,6 +43,11 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.visibleSize.height / 5.0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destinationController = self.storyboard?.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController
+        self.navigationController?.pushViewController(destinationController!, animated: true)
     }
     
     func configureTableView() {
