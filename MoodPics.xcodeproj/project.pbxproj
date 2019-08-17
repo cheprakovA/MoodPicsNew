@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		B2052AA52302C4950099BDEE /* LibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2052AA42302C4950099BDEE /* LibraryViewController.swift */; };
 		B2052AC423033E0D0099BDEE /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2052AC323033E0D0099BDEE /* NetworkConstants.swift */; };
-		B2052ACE230364970099BDEE /* CustomNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2052ACD230364970099BDEE /* CustomNavigationController.swift */; };
 		B2052AD323040A5A0099BDEE /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2052AD123040A5A0099BDEE /* CategoryTableViewCell.swift */; };
 		B2052AD623041C970099BDEE /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B2052AD523041C970099BDEE /* CategoryTableViewCell.xib */; };
 		B2603C5C2307540E00445963 /* VisualSentimentCNN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B2603C5B2307540E00445963 /* VisualSentimentCNN.mlmodel */; };
+		B2603C5F2307947800445963 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2603C5E2307947800445963 /* PhotoViewController.swift */; };
 		B2A7D81523029F2500E884AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A7D81423029F2500E884AD /* AppDelegate.swift */; };
 		B2A7D81723029F2500E884AD /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A7D81623029F2500E884AD /* CategoriesViewController.swift */; };
 		B2A7D81923029F2500E884AD /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A7D81823029F2500E884AD /* CameraViewController.swift */; };
@@ -23,21 +23,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B2052AA42302C4950099BDEE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryViewController.swift; sourceTree = "<group>"; };
+		4F9F9C8F8B1BB3B86913B4D1 /* Pods-MoodPics.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoodPics.release.xcconfig"; path = "Pods/Target Support Files/Pods-MoodPics/Pods-MoodPics.release.xcconfig"; sourceTree = "<group>"; };
+		95ABAB19FBFE396FFA549EE7 /* Pods-MoodPics.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoodPics.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MoodPics/Pods-MoodPics.debug.xcconfig"; sourceTree = "<group>"; };
+		B2052AA42302C4950099BDEE /* LibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LibraryViewController.swift; path = ../LibraryRepresentation/LibraryViewController.swift; sourceTree = "<group>"; };
 		B2052AC323033E0D0099BDEE /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
-		B2052ACD230364970099BDEE /* CustomNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationController.swift; sourceTree = "<group>"; };
 		B2052AD123040A5A0099BDEE /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		B2052AD523041C970099BDEE /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CategoryTableViewCell.xib; path = ../../../../../../../.Trash/CategoryTableViewCell.xib; sourceTree = "<group>"; };
 		B2603C5B2307540E00445963 /* VisualSentimentCNN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = VisualSentimentCNN.mlmodel; path = ../../../../../../Downloads/VisualSentimentCNN.mlmodel; sourceTree = "<group>"; };
+		B2603C5E2307947800445963 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		B2A7D81123029F2500E884AD /* MoodPics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodPics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2A7D81423029F2500E884AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B2A7D81623029F2500E884AD /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
-		B2A7D81823029F2500E884AD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		B2A7D81623029F2500E884AD /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CategoriesViewController.swift; path = ../CategorialRepresentation/CategoriesViewController.swift; sourceTree = "<group>"; };
+		B2A7D81823029F2500E884AD /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CameraViewController.swift; path = ../CameraRepresentation/CameraViewController.swift; sourceTree = "<group>"; };
 		B2A7D81B23029F2500E884AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B2A7D81D23029F2800E884AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B2A7D82023029F2800E884AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2A7D82223029F2800E884AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2C9CBCC23059AF7009586DE /* appFontBatho.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = appFontBatho.ttf; sourceTree = "<group>"; };
+		E28C6C71FDE7BECF156A0823 /* Pods_MoodPics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoodPics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,12 +54,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0818BA74AA864E16BCDE3024 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95ABAB19FBFE396FFA549EE7 /* Pods-MoodPics.debug.xcconfig */,
+				4F9F9C8F8B1BB3B86913B4D1 /* Pods-MoodPics.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B2052AB6230327A20099BDEE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B2052ABC23033CEB0099BDEE /* LibraryRepresentation */,
-				B2052ABB23033CDE0099BDEE /* CameraRepresentation */,
-				B2052ABA23033CAA0099BDEE /* CategorialRepresentation */,
+				B2603C602307960C00445963 /* Representations */,
+				B2603C5E2307947800445963 /* PhotoViewController.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -67,31 +78,6 @@
 				B2A7D81423029F2500E884AD /* AppDelegate.swift */,
 			);
 			path = Application;
-			sourceTree = "<group>";
-		};
-		B2052ABA23033CAA0099BDEE /* CategorialRepresentation */ = {
-			isa = PBXGroup;
-			children = (
-				B2A7D81623029F2500E884AD /* CategoriesViewController.swift */,
-				B2052AC123033D8A0099BDEE /* CategoriesView */,
-			);
-			path = CategorialRepresentation;
-			sourceTree = "<group>";
-		};
-		B2052ABB23033CDE0099BDEE /* CameraRepresentation */ = {
-			isa = PBXGroup;
-			children = (
-				B2A7D81823029F2500E884AD /* CameraViewController.swift */,
-			);
-			path = CameraRepresentation;
-			sourceTree = "<group>";
-		};
-		B2052ABC23033CEB0099BDEE /* LibraryRepresentation */ = {
-			isa = PBXGroup;
-			children = (
-				B2052AA42302C4950099BDEE /* LibraryViewController.swift */,
-			);
-			path = LibraryRepresentation;
 			sourceTree = "<group>";
 		};
 		B2052ABD23033D150099BDEE /* Models */ = {
@@ -130,19 +116,19 @@
 			path = "Resourses ";
 			sourceTree = "<group>";
 		};
-		B2052AC123033D8A0099BDEE /* CategoriesView */ = {
+		B2052AC123033D8A0099BDEE /* Cells */ = {
 			isa = PBXGroup;
 			children = (
 				B2052AD523041C970099BDEE /* CategoryTableViewCell.xib */,
 				B2052AD123040A5A0099BDEE /* CategoryTableViewCell.swift */,
 			);
-			path = CategoriesView;
+			name = Cells;
+			path = ../CategorialRepresentation/Cells;
 			sourceTree = "<group>";
 		};
 		B2052ACF2303649D0099BDEE /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
-				B2052ACD230364970099BDEE /* CustomNavigationController.swift */,
 			);
 			path = BaseClasses;
 			sourceTree = "<group>";
@@ -162,11 +148,24 @@
 			path = MLModel;
 			sourceTree = "<group>";
 		};
+		B2603C602307960C00445963 /* Representations */ = {
+			isa = PBXGroup;
+			children = (
+				B2052AA42302C4950099BDEE /* LibraryViewController.swift */,
+				B2A7D81823029F2500E884AD /* CameraViewController.swift */,
+				B2A7D81623029F2500E884AD /* CategoriesViewController.swift */,
+				B2052AC123033D8A0099BDEE /* Cells */,
+			);
+			path = Representations;
+			sourceTree = "<group>";
+		};
 		B2A7D80823029F2500E884AD = {
 			isa = PBXGroup;
 			children = (
 				B2A7D81323029F2500E884AD /* MoodPics */,
 				B2A7D81223029F2500E884AD /* Products */,
+				0818BA74AA864E16BCDE3024 /* Pods */,
+				B91C4A4AB1EDFC4DE20749CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -208,6 +207,14 @@
 			path = Base.Iproj;
 			sourceTree = "<group>";
 		};
+		B91C4A4AB1EDFC4DE20749CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E28C6C71FDE7BECF156A0823 /* Pods_MoodPics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -215,6 +222,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2A7D82523029F2800E884AD /* Build configuration list for PBXNativeTarget "MoodPics" */;
 			buildPhases = (
+				38378230394EDF631AE5974D /* [CP] Check Pods Manifest.lock */,
 				B2A7D80D23029F2500E884AD /* Sources */,
 				B2A7D80E23029F2500E884AD /* Frameworks */,
 				B2A7D80F23029F2500E884AD /* Resources */,
@@ -276,6 +284,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38378230394EDF631AE5974D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoodPics-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B2A7D80D23029F2500E884AD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -286,9 +315,9 @@
 				B2A7D81523029F2500E884AD /* AppDelegate.swift in Sources */,
 				B2052AA52302C4950099BDEE /* LibraryViewController.swift in Sources */,
 				B2603C5C2307540E00445963 /* VisualSentimentCNN.mlmodel in Sources */,
+				B2603C5F2307947800445963 /* PhotoViewController.swift in Sources */,
 				B2052AD323040A5A0099BDEE /* CategoryTableViewCell.swift in Sources */,
 				B2A7D81723029F2500E884AD /* CategoriesViewController.swift in Sources */,
-				B2052ACE230364970099BDEE /* CustomNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -432,6 +461,7 @@
 		};
 		B2A7D82623029F2800E884AD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95ABAB19FBFE396FFA549EE7 /* Pods-MoodPics.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -450,6 +480,7 @@
 		};
 		B2A7D82723029F2800E884AD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F9F9C8F8B1BB3B86913B4D1 /* Pods-MoodPics.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
