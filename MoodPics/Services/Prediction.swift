@@ -13,6 +13,7 @@ import Vision
 class Prediction {
     
     static let trainedImageSize = CGSize(width: 227, height: 227)
+    static let model = VisualSentimentCNN()
     
     func resize(image: UIImage, newSize: CGSize) -> UIImage? {
         
@@ -27,14 +28,11 @@ class Prediction {
     func predict(image: UIImage) -> Double {
         
         var degree = 0.0
-        let model = VisualSentimentCNN() else {
-            fatalError("The CoreML model being used is not compatible with the Vision framework.")
-        }
         
         do {
             if let resizedImage = resize(image: image, newSize: Prediction.trainedImageSize), let pixelBuffer = resizedImage.toCVPixelBuffer() {
                 
-                let prediction = try model.prediction(data: pixelBuffer)
+                let prediction = try Prediction.model.prediction(data: pixelBuffer)
                 print ("prediction value:", prediction.prob)
                 degree = prediction.prob["Positive"] ?? 0.0
                 degree = degree * 100

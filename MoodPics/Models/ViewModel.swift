@@ -30,8 +30,7 @@ class ViewModel {
     
     var degree = 0.0
     var degrees = [Double]()
-    
-    var low = 0.0, high = 0.0
+    let left, right: Double
     
     // MARK: UI
     
@@ -45,8 +44,10 @@ class ViewModel {
     var reloadData: (() -> Void)?
     var showError: ((Error) -> Void)?
     
-    init(client: APICLient) {
+    init(client: APICLient, left: Double, right: Double) {
         self.client = client
+        self.left = left < 0 ? 0 : left
+        self.right = right > 100 ? 100 : right
     }
     
     func fetchPhotos() {
@@ -80,7 +81,7 @@ class ViewModel {
                 }
                 self.degree = self.ptr.predict(image: image)
                 
-                if self.degree >= self.low && self.degree <= self.high {
+                if self.degree >= self.left && self.degree <= self.right {
                     self.cellViewModels.append(CellViewModel(image: image))
                     self.degrees.append(self.degree)
                 }

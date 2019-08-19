@@ -16,12 +16,15 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Properties
-    
-    let viewModel = ViewModel(client: UnsplashClient())
-    var degree = 0.0
 
+    var degree = 0.0
+    var viewModel: ViewModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let lower = degree - 10.0, higher = degree + 10.0
+        viewModel = ViewModel(client: UnsplashClient(), left: lower, right: higher)
         
         if let layout = collectionView.collectionViewLayout as? CustomLayout {
             layout.delegate = self
@@ -29,8 +32,8 @@ class PhotoViewController: UIViewController {
         collectionView.backgroundColor = UIColor.black
         collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
-        viewModel.showLoading = {
-            if self.viewModel.isLoading {
+        viewModel?.showLoading = {
+            if self.viewModel!.isLoading {
                 self.activityIndicator.startAnimating()
                 self.collectionView.alpha = 0.0
             } else {
@@ -39,15 +42,15 @@ class PhotoViewController: UIViewController {
             }
         }
         
-        viewModel.showError = { error in
+        viewModel?.showError = { error in
             print(error)
         }
 
-        viewModel.reloadData = {
+        viewModel?.reloadData = {
             self.collectionView.reloadData()
         }
         
-        viewModel.fetchPhotos()
+        viewModel?.fetchPhotos()
     }
 }
   
@@ -56,7 +59,7 @@ class PhotoViewController: UIViewController {
 extension PhotoViewController: CustomLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, sizeOfPhotoAtIndexPath indexPath: IndexPath) -> CGSize {
         
-        return viewModel.cellViewModels[indexPath.item].image.size
+        return viewModel!.cellViewModels[indexPath.item].image.size
     }
 }
 
@@ -64,7 +67,7 @@ extension PhotoViewController: CustomLayoutDelegate {
 
 extension PhotoViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.cellViewModels.count
+        return viewModel!.cellViewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -75,7 +78,7 @@ extension PhotoViewController: UICollectionViewDataSource {
         cell.layer.cornerRadius = 7
         cell.clipsToBounds = true
         
-        let image = viewModel.cellViewModels[indexPath.item].image
+        let image = viewModel?.cellViewModels[indexPath.item].image
         cell.imageView.image = image
         
         return cell
