@@ -13,11 +13,11 @@ class CategoriesViewController: UIViewController {
     @IBOutlet weak var categoriesTableView: UITableView!
     
     let moodLevels = [
-        "negative",
-        "sad",
-        "neutral",
-        "cheery",
-        "positive"
+        "POSITIVE",
+        "CHEERY",
+        "NEUTRAL",
+        "SAD",
+        "NEGATIVE"
     ]
     
     override func viewDidLoad() {
@@ -39,7 +39,8 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configureCell(title: moodLevels[indexPath.item], imageName: moodLevels[indexPath.item])
+        cell.configureCell(title: moodLevels[indexPath.item], imageName: moodLevels[indexPath.item].lowercased())
+        
         return cell
     }
 

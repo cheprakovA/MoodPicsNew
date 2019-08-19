@@ -25,6 +25,12 @@
 		B2A7D81C23029F2500E884AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2A7D81A23029F2500E884AD /* Main.storyboard */; };
 		B2A7D81E23029F2800E884AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2A7D81D23029F2800E884AD /* Assets.xcassets */; };
 		B2A7D82123029F2800E884AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2A7D81F23029F2800E884AD /* LaunchScreen.storyboard */; };
+		B2C80FF7230A29720056F8AF /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF1230A25A10056F8AF /* Comfortaa-Bold.ttf */; };
+		B2C80FF8230A29750056F8AF /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF3230A25A10056F8AF /* Comfortaa-Light.ttf */; };
+		B2C80FF9230A29770056F8AF /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF4230A25A10056F8AF /* Comfortaa-Medium.ttf */; };
+		B2C80FFA230A297A0056F8AF /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF6230A25A10056F8AF /* Comfortaa-Regular.ttf */; };
+		B2C80FFB230A297D0056F8AF /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF5230A25A10056F8AF /* Comfortaa-SemiBold.ttf */; };
+		B2C80FFC230A29800056F8AF /* Comfortaa-VariableFont:wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF2230A25A10056F8AF /* Comfortaa-VariableFont:wght.ttf */; };
 		E30305F8F444676D7C611C6F /* Pods_MoodPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A486883C4055BFD888CDEBE /* Pods_MoodPics.framework */; };
 /* End PBXBuildFile section */
 
@@ -319,9 +325,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2C80FF7230A29720056F8AF /* Comfortaa-Bold.ttf in Resources */,
 				B2A7D82123029F2800E884AD /* LaunchScreen.storyboard in Resources */,
+				B2C80FFB230A297D0056F8AF /* Comfortaa-SemiBold.ttf in Resources */,
 				B2A7D81E23029F2800E884AD /* Assets.xcassets in Resources */,
+				B2C80FFA230A297A0056F8AF /* Comfortaa-Regular.ttf in Resources */,
+				B2C80FFC230A29800056F8AF /* Comfortaa-VariableFont:wght.ttf in Resources */,
 				B2A7D81C23029F2500E884AD /* Main.storyboard in Resources */,
+				B2C80FF9230A29770056F8AF /* Comfortaa-Medium.ttf in Resources */,
+				B2C80FF8230A29750056F8AF /* Comfortaa-Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

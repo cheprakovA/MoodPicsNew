@@ -13,6 +13,7 @@ class CameraViewController: UIViewController {
     
     @IBOutlet weak var captureImageView: UIImageView!
     @IBOutlet weak var previewView: UIView!
+    @IBOutlet weak var takePhotoButton: UIButton!
     
     @IBAction func didTakePhoto(_ sender: Any) {
         
@@ -53,6 +54,7 @@ class CameraViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,6 +76,10 @@ class CameraViewController: UIViewController {
                 self.videoPreviewLayer.frame = self.previewView.bounds
             }
         }
+    }
+    
+    func configureButton() {
+        takePhotoButton.setImage(UIImage(named: "photo-camera"), for: .normal)
     }
 }
 
