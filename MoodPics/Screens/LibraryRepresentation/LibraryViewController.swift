@@ -8,23 +8,50 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class LibraryViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var choosePhotoLabel: UILabel!
+    
+    var imagePicker = UIImagePickerController()
+    var image: UIImage!
+    
+    @IBAction func onClickPickImage(_ sender: Any) {
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = false
+        present(imagePicker, animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureButton()
+        configureLabel()
+        configure()
     }
-    */
+    
+    func configureButton() {
+        button.setBackgroundImage(UIImage(named: "upload"), for: .normal)
+    }
+    
+    func configureLabel() {
+        let font = UIFont(name: "Comfortaa-Regular", size: 50)
+        let text = "CHOOSE A PICTURE FROM YOUR LIBRARY"
+        choosePhotoLabel.font = font
+        choosePhotoLabel.numberOfLines = 4
+        choosePhotoLabel.text = text
+        choosePhotoLabel.textColor = UIColor.white
+    }
+    
+    func configure() {
+        imagePicker.delegate = self
+    }
+}
 
+extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            self.image = image
+        }
+        dismiss(animated: true, completion: nil)
+    }
 }
