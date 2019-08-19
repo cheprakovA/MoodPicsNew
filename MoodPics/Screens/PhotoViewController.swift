@@ -18,6 +18,7 @@ class PhotoViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel = ViewModel(client: UnsplashClient())
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,9 +47,7 @@ class PhotoViewController: UIViewController {
         }
         
         viewModel.fetchPhotos()
-        // Do any additional setup after loading the view.
     }
-    
 }
   
 // MARK: Flow layout delegate
@@ -72,9 +71,13 @@ extension PhotoViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
+        cell.layer.cornerRadius = 7
+        cell.clipsToBounds = true
+        
         let image = viewModel.cellViewModels[indexPath.item].image
         cell.imageView.image = image
         
         return cell
     }
 }
+
