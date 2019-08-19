@@ -24,6 +24,12 @@ class CategoriesViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
     }
+    
+    func configureTableView() {
+        categoriesTableView.delegate = self
+        categoriesTableView.dataSource = self
+    }
+    
 }
 
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -33,7 +39,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configureTitle(title: moodLevels[indexPath.item])
+        cell.configureCell(title: moodLevels[indexPath.item], imageName: moodLevels[indexPath.item])
         return cell
     }
 
@@ -45,18 +51,12 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
         return tableView.visibleSize.height / 5.0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destinationController = self.storyboard?.instantiateViewController(withIdentifier: "PhotoViewController") as? PhotoViewController
-        self.navigationController?.pushViewController(destinationController!, animated: true)
-    }
     
-    func configureTableView() {
-        categoriesTableView.delegate = self
-        categoriesTableView.dataSource = self
-        categoriesTableView.register(UINib.init(nibName: "CategoryTableViewCell", bundle: nil),  forCellReuseIdentifier: "CategoryTableViewCell")
-        
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let destinationVC = storyboard?.instantiateViewController(withIdentifier: "ShowPicsController")
+        self.navigationController?.pushViewController(destinationVC!, animated: true)
     }
-    
+ 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

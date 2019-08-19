@@ -9,27 +9,26 @@
 import UIKit
 
 protocol CustomLayoutDelegate: class {
-    func collectionView(_ collectionView:UICollectionView, heightForPhotoAtIndexPath indexPath:IndexPath) -> CGFloat
+    func collectionView(_ collectionView: UICollectionView, sizeOfPhotoAtIndexPath indexPath: IndexPath) -> CGSize
 }
 
 class CustomLayout: UICollectionViewLayout {
     
     weak var delegate: CustomLayoutDelegate!
-
-    // MARK: Properties
     
-    fileprivate var numberOfColumns = 2
-    fileprivate var cellPadding: CGFloat = 5.0
+    var numberOfColumns = 2
+    var cellPadding: CGFloat = 3
     
     fileprivate var cache = [UICollectionViewLayoutAttributes]()
-    fileprivate var contentHeight: CGFloat = 0.0
+    
+    fileprivate var contentHeight: CGFloat = 0
     
     fileprivate var contentWidth: CGFloat {
         guard let collectionView = collectionView else {
             return 0
         }
-        let insets = collectionView.contentInset
-        return collectionView.bounds.width - (insets.left + insets.right)
+        
+        return collectionView.bounds.width
     }
     
     override var collectionViewContentSize: CGSize {
@@ -37,16 +36,14 @@ class CustomLayout: UICollectionViewLayout {
     }
     
     override func prepare() {
-
-        guard cache.isEmpty == true, let collectionView = collectionView else {
+        guard cache.isEmpty, let collectionView = collectionView else {
             return
         }
-
-        let columnWidth = contentWidth / CGFloat(numberOfColumns)
-        var xOffset = [CGFloat]()
         
+        let columnWidth = contentWidth / CGFloat(numberOfColumns)
+        var xOffest = [CGFloat]()
         for column in 0 ..< numberOfColumns {
-            xOffset.append(CGFloat(column) * columnWidth)
+            xOffest.append(CGFloat(column) * columnWidth)
         }
         
         var column = 0
@@ -55,18 +52,40 @@ class CustomLayout: UICollectionViewLayout {
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             
             let indexPath = IndexPath(item: item, section: 0)
-            let photoHeight = delegate.collectionView(collectionView, heightForPhotoAtIndexPath: indexPath)
-            let height = cellPadding * 2 + photoHeight
-            let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             
+            let photoSize = delegate.collectionView(collectionView, sizeOfPhotoAtIndexPath: indexPath)
+            
+            let cellWidth = columnWidth
+            var cellHeight = photoSize.height * cellWidth / photoSize.width
+            
+            cellHeight = cellPadding * 2 + cellHeight
+            
+            let frame = CGRect(x: xOffest[column], y: yOffset[column], width: cellWidth, height: cellHeight)
+            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            
+            let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
-
-            contentHeight = max(contentHeight, frame.maxY)
-            yOffset[column] = yOffset[column] + height
             
+            contentHeight = max(contentHeight, frame.maxY)
+            yOffset[column] = yOffset[column] + cellHeight
+            
+            if numberOfColumns > 1 {
+                var isColumnChanged = false
+                for index in (1 ..< numberOfColumns).reversed() {
+                    if yOffset[index] >= yOffset[index - 1] {
+                        column = index - 1
+                        isColumnChanged = true
+                    }
+                    else {
+                        break
+                    }
+                }
+                
+                if isColumnChanged {
+                    continue
+                }
+            }
             column = column < (numberOfColumns - 1) ? (column + 1) : 0
         }
     }
@@ -74,16 +93,17 @@ class CustomLayout: UICollectionViewLayout {
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         
         var visibleLayoutAttributes = [UICollectionViewLayoutAttributes]()
+        
         for attributes in cache {
             if attributes.frame.intersects(rect) {
                 visibleLayoutAttributes.append(attributes)
             }
         }
+        
         return visibleLayoutAttributes
     }
     
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return cache[indexPath.item]
     }
-    
 }

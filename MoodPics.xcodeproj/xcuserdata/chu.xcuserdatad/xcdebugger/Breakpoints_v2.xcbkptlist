@@ -25,14 +25,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoodPics/Screens/CameraRepresentation/CameraViewController.swift"
-            timestampString = "587684406.3075041"
+            filePath = "MoodPics/Screens/CategorialRepresentation/CategoriesViewController.swift"
+            timestampString = "587861808.8550169"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "CameraViewController"
-            landmarkType = "3">
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -41,13 +41,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoodPics/Screens/CategorialRepresentation/CategoriesViewController.swift"
-            timestampString = "587711106.099052"
+            filePath = "MoodPics/Screens/CategorialRepresentation/Cells/CategoryTableViewCell.swift"
+            timestampString = "587724223.159613"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "viewDidLoad()"
+            landmarkName = "configure()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

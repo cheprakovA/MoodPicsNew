@@ -18,7 +18,11 @@ class ViewModel {
     // MARK: Properties
     
     private let client: APICLient
-    private var photos: Photos = []
+    private var photos: Photos = [] {
+        didSet {
+            self.fetchPhoto()
+        }
+    }
     var cellViewModels: [CellViewModel] = []
     
     // MARK: UI
