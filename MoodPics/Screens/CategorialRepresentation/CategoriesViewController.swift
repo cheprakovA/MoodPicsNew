@@ -12,6 +12,8 @@ class CategoriesViewController: UIViewController {
 
     @IBOutlet weak var categoriesTableView: UITableView!
     
+    var degree = 0.0
+    
     let moodLevels = [
         "POSITIVE",
         "CHEERY",
@@ -30,6 +32,15 @@ class CategoriesViewController: UIViewController {
         categoriesTableView.dataSource = self
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TableSegue" {
+            if let indexPath = categoriesTableView.indexPathForSelectedRow {
+                let destinationVC = segue.destination as! PhotoViewController
+                destinationVC.degree = Double(20 * indexPath.item + 10)
+            }
+        }
+    }
+    
 }
 
 extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
@@ -39,6 +50,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.backgroundColor = UIColor.black
         cell.configureCell(title: moodLevels[indexPath.item], imageName: moodLevels[indexPath.item].lowercased())
         
         return cell
@@ -54,8 +66,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let destinationVC = storyboard?.instantiateViewController(withIdentifier: "ShowPicsController")
-        self.navigationController?.pushViewController(destinationVC!, animated: true)
+        performSegue(withIdentifier: "TableSegue", sender: self)
     }
  
     func numberOfSections(in tableView: UITableView) -> Int {

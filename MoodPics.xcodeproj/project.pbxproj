@@ -31,6 +31,8 @@
 		B2C80FFA230A297A0056F8AF /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF6230A25A10056F8AF /* Comfortaa-Regular.ttf */; };
 		B2C80FFB230A297D0056F8AF /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF5230A25A10056F8AF /* Comfortaa-SemiBold.ttf */; };
 		B2C80FFC230A29800056F8AF /* Comfortaa-VariableFont:wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2C80FF2230A25A10056F8AF /* Comfortaa-VariableFont:wght.ttf */; };
+		B2C80FFE230A9DED0056F8AF /* ImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C80FFD230A9DED0056F8AF /* ImageExtension.swift */; };
+		B2C81000230AA11F0056F8AF /* Prediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C80FFF230AA11F0056F8AF /* Prediction.swift */; };
 		E30305F8F444676D7C611C6F /* Pods_MoodPics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A486883C4055BFD888CDEBE /* Pods_MoodPics.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		B2C80FF4230A25A10056F8AF /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Medium.ttf"; path = "../../../../../ForJava/Comfortaa/Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
 		B2C80FF5230A25A10056F8AF /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-SemiBold.ttf"; path = "../../../../../ForJava/Comfortaa/Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
 		B2C80FF6230A25A10056F8AF /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../../../ForJava/Comfortaa/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		B2C80FFD230A9DED0056F8AF /* ImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageExtension.swift; sourceTree = "<group>"; };
+		B2C80FFF230AA11F0056F8AF /* Prediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prediction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 		B2052ABE23033D1B0099BDEE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B2C80FFF230AA11F0056F8AF /* Prediction.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -162,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				B2089D9823080F38000BCE6F /* CustomLayout.swift */,
+				B2C80FFD230A9DED0056F8AF /* ImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,11 +376,13 @@
 				B2052AC423033E0D0099BDEE /* NetworkConstants.swift in Sources */,
 				B28CB3D62307A31000DE7CD7 /* APICLient.swift in Sources */,
 				B28CB3D82307A67C00DE7CD7 /* UnsplashImages.swift in Sources */,
+				B2C80FFE230A9DED0056F8AF /* ImageExtension.swift in Sources */,
 				B2A7D81523029F2500E884AD /* AppDelegate.swift in Sources */,
 				B2089D9923080F38000BCE6F /* CustomLayout.swift in Sources */,
 				B2052AA52302C4950099BDEE /* LibraryViewController.swift in Sources */,
 				B28CB3D12307996E00DE7CD7 /* PhotoCell.swift in Sources */,
 				B28CB3DC2307AC8600DE7CD7 /* UnsplashClient.swift in Sources */,
+				B2C81000230AA11F0056F8AF /* Prediction.swift in Sources */,
 				B2603C5C2307540E00445963 /* VisualSentimentCNN.mlmodel in Sources */,
 				B28CB3DE2307AEAE00DE7CD7 /* ViewModel.swift in Sources */,
 				B2603C5F2307947800445963 /* PhotoViewController.swift in Sources */,

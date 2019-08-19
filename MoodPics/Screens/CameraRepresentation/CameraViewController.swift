@@ -17,7 +17,7 @@ class CameraViewController: UIViewController {
     @IBOutlet weak var takePhotoButton: UIButton!
     
     @IBAction func didTakePhoto(_ sender: Any) {
-        
+        performSegue(withIdentifier: "CameraSegue", sender: self)
     }
     
     var degree = 0.0
@@ -51,6 +51,11 @@ class CameraViewController: UIViewController {
         } catch let error {
             print("Error Unable to init BACK camera: \(error.localizedDescription)")
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! PhotoViewController
+        destinationVC.degree = self.degree
     }
     
     override func viewDidLoad() {

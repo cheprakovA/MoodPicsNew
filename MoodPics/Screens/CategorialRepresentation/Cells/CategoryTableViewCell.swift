@@ -21,7 +21,7 @@ class CategoryTableViewCell: UITableViewCell {
     
     func configure() {
         moodLevel.font = UIFont(name: "Comfortaa-Bold", size: ceil(moodLevel.bounds.width / 6.5))
-        moodLevel.textColor = UIColor.black
+        moodLevel.textColor = UIColor.white
         moodLevel.text = nil
         emotion.image = nil
     }

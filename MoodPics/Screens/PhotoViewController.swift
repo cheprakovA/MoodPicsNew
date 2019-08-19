@@ -18,18 +18,19 @@ class PhotoViewController: UIViewController {
     // MARK: - Properties
     
     let viewModel = ViewModel(client: UnsplashClient())
+    var degree = 0.0
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let layout = collectionView.collectionViewLayout as? CustomLayout {
             layout.delegate = self
         }
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        collectionView.backgroundColor = UIColor.black
+        collectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         
         viewModel.showLoading = {
-            if self.viewModel.isLoading  {
+            if self.viewModel.isLoading {
                 self.activityIndicator.startAnimating()
                 self.collectionView.alpha = 0.0
             } else {
