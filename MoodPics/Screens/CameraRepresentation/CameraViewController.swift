@@ -10,7 +10,7 @@ import UIKit
 import Vision
 import AVFoundation
 
-class CameraViewController: UIViewController {
+class CameraViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     @IBOutlet weak var moodLevel: UILabel!
     @IBOutlet weak var previewView: UIView!
@@ -26,14 +26,13 @@ class CameraViewController: UIViewController {
     var stillImageOutput: AVCaptureVideoDataOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         captureSession = AVCaptureSession()
         captureSession.sessionPreset = .photo
         
         guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video) else {
-            print("Unable to access back camera!")
             return
         }
         
@@ -49,8 +48,9 @@ class CameraViewController: UIViewController {
                 setupLivePreview()
             }
         } catch let error {
-            print("Error Unable to init BACK camera: \(error.localizedDescription)")
+            print(error.localizedDescription)
         }
+        self.captureSession.startRunning()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,9 +78,9 @@ class CameraViewController: UIViewController {
         videoPreviewLayer.frame = self.view.frame
         self.view.layer.insertSublayer(videoPreviewLayer, at: 0)
         
-        DispatchQueue.global(qos: .userInitiated).async {
-            self.captureSession.startRunning()
-        }
+//        DispatchQueue.global(qos: .userInitiated).async {
+//            self.captureSession.startRunning()
+//        }
     }
     
     func configureButton() {
@@ -88,16 +88,12 @@ class CameraViewController: UIViewController {
     }
     
     func configureLabel() {
-        let font = UIFont(name: "Comfortaa-SemiBold", size: ceil(moodLevel.bounds.width / 15))
+        let font = UIFont(name: "Comfortaa-SemiBold", size: ceil(moodLevel.bounds.width / 18))
         moodLevel.font = font
         moodLevel.textColor = UIColor.white
         moodLevel.text = nil
     }
 
-}
-
-extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         
         guard let pixelBuffer: CVPixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
@@ -123,7 +119,7 @@ extension CameraViewController: AVCaptureVideoDataOutputSampleBufferDelegate {
             }
             
             DispatchQueue.main.async {
-                self.moodLevel.text = "SENTIMENT IS \(Int(self.degree))%"
+                self.moodLevel.text = "SENTIMENT LEVEL IS \(Int(self.degree))%"
             }
         }
         try? VNImageRequestHandler(cvPixelBuffer: pixelBuffer, options: [:]).perform([request])

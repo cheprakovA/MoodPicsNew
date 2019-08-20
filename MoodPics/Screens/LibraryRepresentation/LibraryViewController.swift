@@ -9,30 +9,23 @@
 import UIKit
 import Vision
 
-class LibraryViewController: UIViewController {
+class LibraryViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var choosePhotoLabel: UILabel!
+    @IBOutlet weak var informationLabel: UILabel!
+    @IBOutlet weak var previewImage: UIImageView!
     
-    var ptr = Prediction()
-    
-    var imagePicker = UIImagePickerController()
-    var image: UIImage!
+    let predictionService = PredictionService()
+    let imagePickerController = UIImagePickerController()
     
     var degree = 0.0
     
     @IBAction func onClickPickImage(_ sender: Any) {
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true, completion: nil)
-        predictSelectedPhotoDegree()
-        performSegue(withIdentifier: "LibrarySegue", sender: self)
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureButton()
-        configureLabel()
         configure()
     }
     
@@ -47,27 +40,66 @@ class LibraryViewController: UIViewController {
     
     func configureLabel() {
         let font = UIFont(name: "Comfortaa-Regular", size: 50)
-        let text = "CHOOSE A PICTURE FROM YOUR LIBRARY"
-        choosePhotoLabel.font = font
-        choosePhotoLabel.numberOfLines = 4
-        choosePhotoLabel.text = text
-        choosePhotoLabel.textColor = UIColor.white
+        let text = "CHOOSE A PICTURE FROM LIBRARY"
+        
+        informationLabel.font = font
+        informationLabel.numberOfLines = 4
+        informationLabel.text = text
+        informationLabel.textColor = UIColor.white
     }
     
     func configure() {
-        imagePicker.delegate = self
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.allowsEditing = false
+        
+        configureButton()
+        configureLabel()
+        configureGesture()
     }
     
-    func predictSelectedPhotoDegree() {
-        self.degree = self.ptr.predict(image: image)
-    }
-}
+    func reconfigure() {
+        let font = UIFont(name: "Comfortaa-Light", size: 40)
+        let text = "SENTIMENT LEVEL IS \(Int(degree)) SWIPE LEFT TO PERFORM PICS"
+        
+        informationLabel.font = font
+        informationLabel.text = text
 
-extension LibraryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            self.image = image
+    }
+    
+    func configureGesture() {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeft.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(swipeLeft)
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.left:
+                do {
+                    performSegue(withIdentifier: "LibrarySegue", sender: self)
+                }
+            default:
+                break
+            }
         }
-        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            previewImage!.contentMode = .scaleAspectFill
+            previewImage!.image = pickedImage
+        }
+        
+        self.degree = self.predictionService.predict(image: previewImage!.image!)
+        
+        reconfigure()
+
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

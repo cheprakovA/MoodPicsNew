@@ -36,7 +36,7 @@ class CategoriesViewController: UIViewController {
         if segue.identifier == "TableSegue" {
             if let indexPath = categoriesTableView.indexPathForSelectedRow {
                 let destinationVC = segue.destination as! PhotoViewController
-                destinationVC.degree = Double(20 * indexPath.item + 10)
+                destinationVC.degree = Double(90 - 20 * indexPath.item)
             }
         }
     }
@@ -61,11 +61,11 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.visibleSize.height / 5.0
+        return (tableView.visibleSize.height - 40.0) / 5.0
     }
     
     
-     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "TableSegue", sender: self)
     }
  

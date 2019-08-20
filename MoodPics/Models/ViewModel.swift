@@ -17,7 +17,7 @@ class ViewModel {
     
     // MARK: Properties
     
-    let ptr = Prediction()
+    let ptr = PredictionService()
     
     private let client: APICLient
     private var photos: Photos = [] {

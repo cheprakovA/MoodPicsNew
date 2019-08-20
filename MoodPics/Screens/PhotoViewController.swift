@@ -15,6 +15,10 @@ class PhotoViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Properties
 
     var degree = 0.0
@@ -24,6 +28,7 @@ class PhotoViewController: UIViewController {
         super.viewDidLoad()
         
         let lower = degree - 10.0, higher = degree + 10.0
+        
         viewModel = ViewModel(client: UnsplashClient(), left: lower, right: higher)
         
         if let layout = collectionView.collectionViewLayout as? CustomLayout {
@@ -52,6 +57,7 @@ class PhotoViewController: UIViewController {
         
         viewModel?.fetchPhotos()
     }
+
 }
   
 // MARK: Flow layout delegate
@@ -75,7 +81,7 @@ extension PhotoViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.layer.cornerRadius = 7
+        cell.layer.cornerRadius = 10
         cell.clipsToBounds = true
         
         let image = viewModel?.cellViewModels[indexPath.item].image

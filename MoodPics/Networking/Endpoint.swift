@@ -51,7 +51,8 @@ enum UnsplashEndpoint: Endpoint {
         case .photos(let id, let order):
             return [
                 URLQueryItem(name: "client_id", value: id),
-                URLQueryItem(name: "order_by", value: order.rawValue)
+                URLQueryItem(name: "order_by", value: order.rawValue),
+                URLQueryItem(name: "per_page", value: "20")
             ]
         }
     }

@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 import Vision
 
-class Prediction {
+class PredictionService {
     
     static let trainedImageSize = CGSize(width: 227, height: 227)
     static let model = VisualSentimentCNN()
@@ -30,9 +30,9 @@ class Prediction {
         var degree = 0.0
         
         do {
-            if let resizedImage = resize(image: image, newSize: Prediction.trainedImageSize), let pixelBuffer = resizedImage.toCVPixelBuffer() {
+            if let resizedImage = resize(image: image, newSize: PredictionService.trainedImageSize), let pixelBuffer = resizedImage.toCVPixelBuffer() {
                 
-                let prediction = try Prediction.model.prediction(data: pixelBuffer)
+                let prediction = try PredictionService.model.prediction(data: pixelBuffer)
                 print ("prediction value:", prediction.prob)
                 degree = prediction.prob["Positive"] ?? 0.0
                 degree = degree * 100
