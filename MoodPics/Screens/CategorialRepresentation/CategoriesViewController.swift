@@ -61,7 +61,7 @@ extension CategoriesViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return (tableView.visibleSize.height - 40.0) / 5.0
+        return tableView.visibleSize.height / 5.0
     }
     
     
